@@ -4,65 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="INFERNO.jpg" type="image/png">
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            justify-content: flex-start; /* تحريك الزر إلى اليسار */
+        }
+
+        .return-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .return-button:hover {
+            background-color: #f0f0f0;
+            color: black;
+        }
+
+        .main-background {
+            height: 100vh; /* تأكيد أن الخلفية تأخذ كامل الشاشة */
+            background-image: url('3.jpg'); /* استبدل هذا بالرابط الخاص بالصورة */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #141414;
-            color: #fff;
-            font-family: Arial, sans-serif;
+            position: relative;
         }
+
         .login-container {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.8); /* خلفية شبه شفافة */
             border-radius: 10px;
             padding: 20px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        .login-container h2 {
-            margin-top: 0;
-            color: #e50914;
-        }
-        .login-container input {
             width: 90%;
+            max-width: 400px; /* تحديد أقصى عرض للنموذج */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            position: relative; /* لتحديد موضع الصورة */
+        }
+
+        .login-container img {
+            width: 60px; /* حجم الصورة */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* توسيط الصورة */
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px; /* إضافة مسافة بين العنوان والنموذج */
+            color: white; /* تغيير لون النص إلى الأبيض */
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .login-container label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #fff;
+        }
+
+        .login-container input {
+            width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
-            align-items: center;
-            justify-content: center;
-            border:     color(srgb red rgb(128, 0, 0) rgb(255, 0, 0));
-            border-radius: 30px;
-            background-color: #ffffff;
-            color: #000000;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
         }
+
         .login-container button {
             width: 100%;
             padding: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #e50914;
-            color: #e60f0f;
+            background-color: white; /* تغيير لون الخلفية إلى الأبيض */
+            color: black; /* تغيير لون النص إلى الأسود */
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .login-container button:hover {
-            background-color: #f40612;
+            background-color: #f0f0f0;
+            color: black;
         }
+
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2ل></h2>
-        <form id="login-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            <input type="submit" value="Login">
-        </form>
+    <header>
+        <a href="index.html" class="return-button">RETURN</a>
+    </header>
+
+    <div class="main-background">
+        <div class="login-container">
+            <img src="INFERNO.jpg" alt="Logo"> <!-- استبدل 'logo.png' بالصورة التي ترغب بها -->
+            <h2>ULTRAS INFERNO 2010</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
     </div>
 
     <script>

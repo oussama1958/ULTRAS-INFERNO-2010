@@ -7,117 +7,214 @@
     <link rel="icon" href="INFERNO.jpg" type="image/png">
     <style>
         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body, html {
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: black;
-    color: white;
-    overflow-x: hidden;
-}
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: none; /* إزالة الخلفية المنفصلة للـ header */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-}
+        header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
 
-.logo {
-    height: 50px;
-    width: auto;
-}
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
 
-.styled-button {
-    padding: 10px 25px;
-    border-radius: 30px;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-decoration: none; /* لجعل الزر يشبه زر وليس رابط */
-}
+        .menu-icon div {
+            width: 30px; /* تصغير حجم الأيقونة */
+            height: 4px;
+            background-color: white;
+            margin: 6px 0;
+            border-radius: 5px;
+        }
 
-.styled-button:hover {
-    background-color: white;
-    color: black;
-}
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
 
-.main-background {
-    height: 40vh; /* تقليل الطول إلى 40% من ارتفاع الشاشة */
-    background-image: url('1.jpg'); /* الخلفية للصورة الموحدة */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    animation: fadeIn 2s ease-out forwards;
-}
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: left 0.3s ease, transform 0.3s ease;
+            z-index: 100;
+            padding-top: 20px;
+            transform: translateX(-10%);
+        }
 
-.animated-title {
-    font-size: 4rem;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-    font-family: 'Cartoon Font', cursive; /* استبدل بخط كرتوني من اختيارك */
-}
+        .side-menu img {
+            width: 80%; /* تصغير حجم الشعار */
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-bottom: 2px solid rgba(255, 255, 255, 0);
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+        .side-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px solid white;
+            font-family: 'Comic Sans MS', cursive; /* الخط الكرتوني */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-/* تصميم استجابة للهاتف */
-@media (max-width: 768px) {
-    header {
-        height: auto;
-        padding: 10px;
-    }
+        .side-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05); /* تأثير التكبير عند التمرير */
+        }
 
-    .main-background {
-        height: 40vh;
-    }
+        .login-section {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
 
-    .animated-title {
-        font-size: 2.5rem;
-        padding: 10px;
-    }
+        .login-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    .styled-button {
-        font-size: 0.9rem;
-        padding: 8px 20px;
-    }
+        .login-button:hover {
+            background-color: white;
+            color: black;
+        }
 
-    .logo {
-        height: 40px;
-    }
-}
+        .menu-open {
+            left: 0;
+            transform: translateX(0%);
+        }
 
+        .main-background {
+            height: 40vh;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .animated-title {
+            font-size: 4rem;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 10px;
+            }
+
+            .main-background {
+                height: 40vh;
+            }
+
+            .animated-title {
+                font-size: 2.5rem;
+                padding: 10px;
+            }
+
+            .menu-icon div {
+                width: 25px;
+                height: 4px;
+            }
+
+            .side-menu {
+                width: 250px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="INFERNO.jpg" alt="Logo" class="logo">
-        <a href="login.html" class="styled-button">login</a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
+
+    <div class="side-menu" id="sideMenu">
+        <img src="INFERNO.jpg" alt="Logo">
+        <a href="#">الرئيسية</a>
+        <a href="#">حولنا</a>
+        <a href="#">اتصل بنا</a>
+        <div class="login-section">
+            <a href="login.html" class="login-button">LOGIN</a>
+        </div>
+        <span class="close-icon" onclick="toggleMenu()">×</span>
+    </div>
+
     <div class="main-background">
         <h1 class="animated-title">ULTRAS INFERNO 2010</h1>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('menu-open');
+        }
+    </script>
 </body>
 </html>
